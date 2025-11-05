@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Spiris Design System - Based on actual Spiris application */
+:root {
+  /* Primary Colors - Spiris Deep Purple */
+  --spiris-purple: #6B1B9A;
+  --spiris-purple-dark: #551479;
+  --spiris-purple-light: #7d2aac;
+  
+  /* Accent Colors */
+  --spiris-red: #E94B6C;
+  --spiris-green: #4CAF50;
+  --spiris-blue: #2196F3;
+  
+  /* Neutral Colors */
+  --spiris-gray-50: #FAFAFA;
+  --spiris-gray-100: #F5F5F5;
+  --spiris-gray-200: #EEEEEE;
+  --spiris-gray-300: #E0E0E0;
+  --spiris-gray-400: #BDBDBD;
+  --spiris-gray-500: #9E9E9E;
+  --spiris-gray-600: #757575;
+  --spiris-gray-700: #616161;
+  --spiris-gray-800: #424242;
+  --spiris-gray-900: #212121;
+  
+  /* Text Colors */
+  --spiris-text-primary: #212121;
+  --spiris-text-secondary: #616161;
+  --spiris-text-disabled: #9E9E9E;
+}
+
+/* Remove default transitions for cleaner feel */
+* {
+  transition: none;
+}
+
+button, a, input, select {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}

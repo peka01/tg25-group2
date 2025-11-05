@@ -1,0 +1,72 @@
+{
+  "name": "Invoice Creation Guide",
+  "description": "Learn how to create a customer invoice step by step",
+  "category": "invoicing",
+  "autoStartDefault": true,
+  "steps": [
+    {
+      "element": "[data-guide-step='welcome']",
+      "popover": {
+        "title": "Welcome to Invoice Creation",
+        "description": "This guide will show you how to create a customer invoice. Let's get started!",
+        "side": "bottom"
+      }
+    },
+    {
+      "element": "[data-guide-step='customer-select']",
+      "popover": {
+        "title": "Select a Customer",
+        "description": "First, select the customer you want to invoice. You can search for customers by name or choose from the dropdown menu.",
+        "side": "bottom"
+      }
+    },
+    {
+      "element": "[data-guide-step='product-select']",
+      "popover": {
+        "title": "Select a Product/Service",
+        "description": "Choose the product or service you want to add to the invoice. Each item has a preset price.",
+        "side": "bottom"
+      }
+    },
+    {
+      "element": "[data-guide-step='quantity-input']",
+      "popover": {
+        "title": "Enter Quantity",
+        "description": "Specify how many units of this product or service the customer is purchasing.",
+        "side": "bottom"
+      }
+    },
+    {
+      "element": "[data-guide-step='add-line-item']",
+      "popover": {
+        "title": "Add Line Items",
+        "description": "Click here to add products or services to the invoice. You can add multiple line items.",
+        "side": "left"
+      }
+    },
+    {
+      "element": "[data-guide-step='line-items-table']",
+      "popover": {
+        "title": "Review Line Items",
+        "description": "Here you can see all the line items added to the invoice. You can edit quantities or remove items as needed.",
+        "side": "top"
+      }
+    },
+    {
+      "element": "[data-guide-step='invoice-preview']",
+      "popover": {
+        "title": "Preview Invoice",
+        "description": "Review the invoice details including customer information, line items, and total amounts before saving.",
+        "side": "left"
+      }
+    },
+    {
+      "element": "[data-guide-step='save-invoice']",
+      "popover": {
+        "title": "Save Invoice",
+        "description": "When you're satisfied with the invoice, click here to save it. The invoice will be added to your invoice list.",
+        "side": "top"
+      }
+    }
+  ]
+}
