@@ -25,6 +25,9 @@ const CreateInvoice = () => {
   const [selectedCustomerId, setSelectedCustomerId] = useState('')
   const [selectedProductId, setSelectedProductId] = useState('')
   const [quantity, setQuantity] = useState(1)
+  const [notes, setNotes] = useState('')
+  const [notesHistory, setNotesHistory] = useState<string[]>([])
+  const [showNotesHint, setShowNotesHint] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
 
   // Auto-start guide on first visit
@@ -73,6 +76,10 @@ const CreateInvoice = () => {
       setTimeout(() => {
         setShowSuccess(false)
         navigate('/invoices')
+        // Start guide after navigation
+        setTimeout(() => {
+          startGuide('view-invoices')
+        }, 300)
       }, 2000)
     } else {
       alert('Please select a customer and add at least one line item')
@@ -85,7 +92,23 @@ const CreateInvoice = () => {
       setSelectedCustomerId('')
       setSelectedProductId('')
       setQuantity(1)
+      setNotes('')
+      setNotesHistory([])
+      setShowNotesHint(false)
     }
+  }
+
+  const handleNotesChange = (value: string) => {
+    // Track if user had content, erased it, and is typing again
+    if (notes.length > 0 && value.length === 0) {
+      // User erased content
+      setNotesHistory(prev => [...prev, notes])
+    } else if (notesHistory.length > 0 && notes.length === 0 && value.length > 0) {
+      // User is typing again after erasing
+      setShowNotesHint(true)
+    }
+    
+    setNotes(value)
   }
 
   const totals = lineItems.reduce((acc, item) => {
@@ -241,6 +264,28 @@ const CreateInvoice = () => {
       {lineItems.length > 0 && currentInvoice?.customerId && (
         <div data-guide-step="invoice-preview" className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">3. Preview Invoice</h3>
+          
+          {/* Notes/Comments Field */}
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Notes (Optional)
+            </label>
+            <textarea
+              value={notes}
+              onChange={(e) => handleNotesChange(e.target.value)}
+              placeholder="Add any additional notes or comments for this invoice..."
+              rows={3}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-none"
+            />
+            {showNotesHint && (
+              <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg flex items-start gap-2">
+                <span className="text-blue-600 text-lg">💡</span>
+                <p className="text-sm text-blue-700">
+                  <strong>Hint:</strong> Type this instead: "Payment due within 30 days"
+                </p>
+              </div>
+            )}
+          </div>
           
           <div className="border-t border-gray-200 pt-4">
             <div className="flex justify-between text-sm mb-2">

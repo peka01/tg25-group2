@@ -1,0 +1,24 @@
+{
+  "name": "View Invoices Guide",
+  "description": "Find your newly created invoices",
+  "category": "invoicing",
+  "autoStartDefault": true,
+  "steps": [
+    {
+      "element": "table",
+      "popover": {
+        "title": "Great Job! 🎉",
+        "description": "You successfully created your first invoice! Here's where you can find all your invoices. Your newly created invoice is right here at the top of the list.",
+        "side": "top"
+      }
+    },
+    {
+      "element": "tbody tr:first-child",
+      "popover": {
+        "title": "Latest Invoice",
+        "description": "This is your newly created invoice. You can see the invoice number, customer, date, and status here.",
+        "side": "left"
+      }
+    }
+  ]
+}
